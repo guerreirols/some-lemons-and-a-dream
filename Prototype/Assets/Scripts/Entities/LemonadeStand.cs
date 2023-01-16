@@ -6,16 +6,18 @@ public class LemonadeStand
     private int basicBlenders;
     private int superBlenders;
 
+    private bool premiumLemons;
     private bool open;
 
     public LemonadeStand(float lemonadeValue)
     {
         this.lemonadeValue = lemonadeValue;
-        totalBlenders = 1;
-        bowls = 1;
-        basicBlenders = 0;
-        superBlenders = 0;
-        open = true;
+        this.totalBlenders = 0;
+        this.bowls = 1;
+        this.basicBlenders = 0;
+        this.superBlenders = 0;
+        this.open = true;
+        this.premiumLemons = false;
     }
 
     public float GetLemonadeValue()
@@ -28,7 +30,7 @@ public class LemonadeStand
         this.lemonadeValue = lastSale;
     }
 
-    public float GetTotalBlenders()
+    public int GetTotalBlenders()
     {
         return totalBlenders;
     }
@@ -76,5 +78,15 @@ public class LemonadeStand
     public void SetOpen(bool open)
     {
         this.open = open;
+    }
+
+    public bool GetPremiumLemons()
+    {
+        return premiumLemons;
+    }
+
+    public void SetPremiumLemons(bool premiumLemons)
+    {
+        this.premiumLemons = premiumLemons;
     }
 }

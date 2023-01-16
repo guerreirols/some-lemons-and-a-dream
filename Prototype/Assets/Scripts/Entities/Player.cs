@@ -9,7 +9,7 @@ public class Player
     {
         clothesDesire = 0f;
         hungry = 0f;
-        money = 0;
+        money = 200f;
         isHappy = true;
     }
 
