@@ -27,4 +27,32 @@ public class Texts
     public static string msgSellButton = "SELL";
     #endregion
 
+    #region Dialogues
+    public static string msgNameBurguer = "Nelman";
+    public static string msgFirstDialogueBurguer = "Welcome to Top Burguer!";
+    public static string msgSecondDialogueBurguer = "I have two burgers on sale, which one would you like?";
+    public static string msgThirdDialogueBurguer = "Thanks!";
+
+    public static string msgNameClothes = "Eva";
+    public static string msgFirstDialogueClothes = "Heeey Welcome to Top Clothes!!";
+    public static string msgSecondDialogueClothes = "There are only two pieces of clothing left, would you like to see them?";
+    public static string msgThirdDialogueClothes = "Have a nice day!";
+    #endregion
+
+    #region Products
+    public static string msgShopHamburguerTitle = "Top Burguer - Menu";
+    public static string msgShopClothesTitle = "Top Clothes - Stock";
+
+    public static string msgBasicHamburguer = "Happy Hamburguer";
+    public static string msgSuperHamburguer = "Monster Hamburguer";
+
+    public static string msgBasicClothe = "Boy Band Shirt";
+    public static string msgSuperClothe = "Biker Jacket";
+
+    public static string msgBasicHamburguerDescription = "A simple hamburger, it may not kill the hunger but it is full of happiness!";
+    public static string msgSuperHamburguerDescription = "Are you hungry? Eat this giant snack and be satisfied forever!";
+
+    public static string msgBasicClotheDescription = "Wear the shirt of your favorite band right now!";
+    public static string msgSuperClotheDescription = "Tired of being threatened? With this heavy jacket be more intimidating!";
+    #endregion
 }

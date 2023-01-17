@@ -25,6 +25,11 @@ public class StoreDemands : MonoBehaviour
         storeCardsList.Add(premiumLemons);
     }
 
+    void Start()
+    {
+
+    }
+
     public static StoreCard GetCardBowl()
     {
         return bowl;
@@ -139,8 +144,4 @@ public class StoreDemands : MonoBehaviour
                 break;
         }
     }
-
-
-
-
 }

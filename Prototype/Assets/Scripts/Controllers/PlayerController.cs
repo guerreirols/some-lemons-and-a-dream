@@ -18,23 +18,26 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        inputX = Input.GetAxisRaw("Horizontal");
-        inputY = Input.GetAxisRaw("Vertical");
-        isWalking = (inputX != 0 || inputY != 0);
-
-        if(isWalking)
+        if(!Dialogue.inDialogue)
         {
-            Vector3 move = new Vector3(inputX, inputY).normalized;
-            transform.position += move * speed * Time.deltaTime;
-            playerAnimator.SetFloat("input_x", inputX);
-            playerAnimator.SetFloat("input_y", inputY);
-        }
+            inputX = Input.GetAxisRaw("Horizontal");
+            inputY = Input.GetAxisRaw("Vertical");
+            isWalking = (inputX != 0 || inputY != 0);
 
-        playerAnimator.SetBool("isWalking", isWalking);
+            if (isWalking)
+            {
+                Vector3 move = new Vector3(inputX, inputY).normalized;
+                transform.position += move * speed * Time.deltaTime;
+                playerAnimator.SetFloat("input_x", inputX);
+                playerAnimator.SetFloat("input_y", inputY);
+            }
 
-        if(Input.GetButtonDown("Fire1"))
-        {
-            playerAnimator.SetTrigger("attack");
-        }
+            playerAnimator.SetBool("isWalking", isWalking);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                playerAnimator.SetTrigger("attack");
+            }
+        }       
     }
 }

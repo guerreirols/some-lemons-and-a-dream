@@ -4,6 +4,7 @@ public class Player
     private float hungry;
     private float money;
     private bool isHappy;
+    private ClothesBag clothesBag;
 
     public Player()
     {
@@ -11,6 +12,7 @@ public class Player
         hungry = 0f;
         money = 200f;
         isHappy = true;
+        clothesBag = new ClothesBag();
     }
 
     public float GetClothesDesire()
@@ -51,5 +53,10 @@ public class Player
     public void SetIsHappy(bool isHappy)
     {
         this.isHappy = isHappy;
+    }
+
+    public ClothesBag GetClothesBag()
+    {
+        return clothesBag;
     }
 }

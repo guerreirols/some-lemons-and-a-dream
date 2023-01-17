@@ -27,40 +27,46 @@ public class PlayerDemands : MonoBehaviour
     public static void Hungry()
     {
         player.SetHungry(player.GetHungry() + 0.1f);
+
+        if (player.GetHungry() >= 1f)
+        {
+            player.SetHungry(1f);
+        }
     }
 
-    public static void KillHungry(int idHamburguer)
+    public static void KillHungry(float power)
     {
-        if(idHamburguer == 1)
+        player.SetHungry(player.GetHungry() - power);
+
+        if(player.GetHungry() <= 0)
         {
-            player.SetHungry(player.GetHungry() - 3);
-        }
-        else
-        {
-            player.SetHungry(player.GetHungry() - 5);
+            player.SetHungry(0);
         }
     }
 
     public static void ClothesDesire()
     {
         player.SetClothesDesire(player.GetClothesDesire() + 0.1f);
+
+        if (player.GetClothesDesire() >= 1f)
+        {
+            player.SetClothesDesire(1f);
+        }
     }
 
-    public static void KillClothesDesire(int idClothe)
+    public static void KillClothesDesire(float power)
     {
-        if (idClothe == 1)
+        player.SetClothesDesire(player.GetClothesDesire() - 3);
+
+        if (player.GetClothesDesire() <= 0)
         {
-            player.SetClothesDesire(player.GetClothesDesire() - 3);
-        }
-        else
-        {
-            player.SetClothesDesire(player.GetClothesDesire() - 5);
+            player.SetClothesDesire(0);
         }
     }
 
     public static void MoodSensor()
     {
-        if (player.GetHungry() > 1f || player.GetClothesDesire() > 1f)
+        if (player.GetHungry() == 1f || player.GetClothesDesire() == 1f)
         {
             player.SetIsHappy(false);
         }

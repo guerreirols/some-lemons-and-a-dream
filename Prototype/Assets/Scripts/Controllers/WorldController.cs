@@ -1,9 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
     private bool gameOver;
+
+
+    [SerializeField]
+    private Image mood;
+
+    [SerializeField]
+    private Sprite happy;
+    [SerializeField]
+    private Sprite angry;
 
     void Start()
     {
@@ -15,6 +25,15 @@ public class WorldController : MonoBehaviour
     void Update()
     {
         PlayerDemands.MoodSensor();
+
+        if(PlayerDemands.GetPlayer().GetIsHappy())
+        {
+            mood.sprite = happy;
+        }
+        else
+        {
+            mood.sprite = angry;
+        }
     }
 
     IEnumerator SoldLemonade()

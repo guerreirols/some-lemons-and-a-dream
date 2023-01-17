@@ -9,6 +9,38 @@ public class Store : MonoBehaviour
     private Text money;
 
     [SerializeField]
+    private GameObject bowl1;
+    [SerializeField]
+    private GameObject bowl2;
+    [SerializeField]
+    private GameObject bowl3;
+    [SerializeField]
+    private GameObject bowl4;
+
+    [SerializeField]
+    private GameObject basicBlender1;
+    [SerializeField]
+    private GameObject basicBlender2;
+    [SerializeField]
+    private GameObject basicBlender3;
+    [SerializeField]
+    private GameObject basicBlender4;
+
+    [SerializeField]
+    private GameObject superBlender1;
+    [SerializeField]
+    private GameObject superBlender2;
+    [SerializeField]
+    private GameObject superBlender3;
+    [SerializeField]
+    private GameObject superBlender4;
+
+    [SerializeField]
+    private GameObject classicLemons;
+    [SerializeField]
+    private GameObject premiumLemons;
+
+    [SerializeField]
     private Text titleBowl;
     [SerializeField]
     private Image imageBowl;
@@ -94,6 +126,11 @@ public class Store : MonoBehaviour
     private StoreYourCard yourPremiumLemonsCard;
 
     private static List<StoreYourCard> storeCardsYourList = new List<StoreYourCard>();
+
+    string slot1 = null;
+    string slot2 = null;
+    string slot3 = null;
+    string slot4 = null;
 
     void Start()
     {
@@ -249,7 +286,6 @@ public class Store : MonoBehaviour
                 if (storeYourCard.GetTitle().Equals(yourItem.GetStoreCard().GetTitle()))
                 {
                     storeYourCard.SetQuantity(storeYourCard.GetQuantity() + 1);
-                    print("veio");
 
                     if (cardTitle1.text.Equals(storeYourCard.GetTitle()))
                     {
@@ -269,7 +305,9 @@ public class Store : MonoBehaviour
                     }
                 }
             }
-        }      
+        }
+
+        ChangeStandDisplay(id, true);
     }
 
     public void Sell(int card)
@@ -387,6 +425,164 @@ public class Store : MonoBehaviour
             if(storeCard.GetTitle().Equals(itemSold))
             {
                 StoreDemands.SellItem(storeCard);
+                ChangeStandDisplay(storeCard.GetId(), false);
+            }
+        }     
+    }
+
+    private void ChangeStandDisplay(int id, bool isBought)
+    {
+        if (isBought)
+        {
+            switch (id)
+            {
+                case 1:
+                    if(slot1 == null)
+                    {
+                        bowl1.SetActive(true);
+                        slot1 = "Bowl";
+                    }
+                    else if(slot2 == null)
+                    {
+                        bowl2.SetActive(true);
+                        slot2 = "Bowl";
+                    }
+                    else if (slot3 == null)
+                    {
+                        bowl3.SetActive(true);
+                        slot3 = "Bowl";
+                    }
+                    else if (slot4 == null)
+                    {
+                        bowl4.SetActive(true);
+                        slot4 = "Bowl";
+                    }
+                    break;
+                case 2:
+                    if (slot1 == null)
+                    {
+                        basicBlender1.SetActive(true);
+                        slot1 = "Basic Blender";
+                    }
+                    else if (slot2 == null)
+                    {
+                        basicBlender2.SetActive(true);
+                        slot2 = "Basic Blender";
+                    }
+                    else if (slot3 == null)
+                    {
+                        basicBlender3.SetActive(true);
+                        slot3 = "Basic Blender";
+                    }
+                    else if (slot4 == null)
+                    {
+                        basicBlender4.SetActive(true);
+                        slot4 = "Basic Blender";
+                    }
+                    break;
+                case 3:
+                    if (slot1 == null)
+                    {
+                        superBlender1.SetActive(true);
+                        slot1 = "Super Blender";
+                    }
+                    else if (slot2 == null)
+                    {
+                        superBlender2.SetActive(true);
+                        slot2 = "Super Blender";
+                    }
+                    else if (slot3 == null)
+                    {
+                        superBlender3.SetActive(true);
+                        slot3 = "Super Blender";
+                    }
+                    else if (slot4 == null)
+                    {
+                        superBlender4.SetActive(true);
+                        slot4 = "Super Blender";
+                    }
+                    break;
+                case 4:
+                    premiumLemons.SetActive(true);
+                    classicLemons.SetActive(false);
+                    break;
+            }
+
+        }
+        else
+        {
+            switch (id)
+            {
+                case 1:
+                    if (slot4 == "Bowl")
+                    {
+                        bowl4.SetActive(false);
+                        slot4 = null;
+                    }
+                    else if (slot3 == "Bowl")
+                    {
+                        bowl3.SetActive(false);
+                        slot3 = null;
+                    }
+                    else if (slot2 == "Bowl")
+                    {
+                        bowl2.SetActive(false);
+                        slot2 = null;
+                    }
+                    else if (slot1 == "Bowl")
+                    {
+                        bowl1.SetActive(false);
+                        slot1 = null;
+                    }
+                    break;
+                case 2:
+                    if (slot4 == "Basic Blender")
+                    {
+                        basicBlender4.SetActive(false);
+                        slot4 = null;
+                    }
+                    else if (slot3 == "Basic Blender")
+                    {
+                        basicBlender3.SetActive(false);
+                        slot3 = null;
+                    }
+                    else if (slot2 == "Basic Blender")
+                    {
+                        basicBlender2.SetActive(false);
+                        slot2 = null;
+                    }
+                    else if (slot1 == "Basic Blender")
+                    {
+                        basicBlender1.SetActive(false);
+                        slot1 = null;
+                    }
+                    break;
+                case 3:
+                    if (slot4 == "Super Blender")
+                    {
+                        superBlender4.SetActive(false);
+                        slot4 = null;
+                    }
+                    else if (slot3 == "Super Blender")
+                    {
+                        superBlender3.SetActive(false);
+                        slot3 = null;
+                    }
+                    else if (slot2 == "Super Blender")
+                    {
+                        superBlender2.SetActive(false);
+                        slot2 = null;
+                    }
+                    else if (slot1 == "Super Blender")
+                    {
+                        superBlender1.SetActive(false);
+                        slot1 = null;
+                    }
+                    break;
+                case 4:
+                    premiumLemons.SetActive(false);
+                    classicLemons.SetActive(true);
+                    break;
             }
         }
     }

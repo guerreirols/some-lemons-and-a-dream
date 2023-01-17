@@ -5,6 +5,10 @@ public class InferiorButtons : MonoBehaviour
 {
     [SerializeField]
     private Animator manageStandAnimator;
+    [SerializeField]
+    private Animator interactBurguer;
+    [SerializeField]
+    private Animator interactClothe;
 
     [SerializeField]
     private Text clothesBag;
@@ -15,6 +19,11 @@ public class InferiorButtons : MonoBehaviour
 
     [SerializeField]
     private GameObject canvasManageStore;
+    [SerializeField]
+    private GameObject canvasClothesBag;
+
+    public static bool inBurguer;
+    public static bool inClothes;
 
     void Start()
     {
@@ -41,7 +50,46 @@ public class InferiorButtons : MonoBehaviour
 
         //
 
+        if (!TopBurguerTrigger.topBurguerTrigger)
+        {
+            interactBurguer.SetBool("hideButton", true);
+        }
+        else
+        {
+            interactBurguer.SetBool("hideButton", false);
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                inBurguer = true;
+            }
+            else
+            {
+                inBurguer = false;
+            }
+        }
 
+        // 
+
+        if (!TopClothesTrigger.topClothesTrigger)
+        {
+            interactClothe.SetBool("hideButton", true);
+        }
+        else
+        {
+            interactClothe.SetBool("hideButton", false);
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                inClothes = true;
+            }
+            else
+            {
+                inClothes = false;
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            OpenClothesBag();
+        }
     }
 
     public void OpenManageStand()
@@ -53,4 +101,16 @@ public class InferiorButtons : MonoBehaviour
     {
         canvasManageStore.SetActive(false); 
     }
+
+    public void OpenClothesBag()
+    {
+        canvasClothesBag.SetActive(true);
+    }
+
+    public void ExitClothesBag()
+    {
+        canvasClothesBag.SetActive(false);
+    }
+
+
 }
