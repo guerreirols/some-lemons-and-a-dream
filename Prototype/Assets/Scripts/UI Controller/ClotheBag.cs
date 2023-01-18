@@ -27,15 +27,18 @@ public class ClotheBag : MonoBehaviour
     {
         if(id == 1)
         {
-
+            ChangeClothe.idClothe = 1;
+            PlayerDemands.KillClothesDesire(3f);
         }
         else if(id == 2)
         {
-
+            ChangeClothe.idClothe = 2;
+            PlayerDemands.KillClothesDesire(8f);
         }
         else
         {
-
+            ChangeClothe.idClothe = 0;
+            PlayerDemands.KillClothesDesire(1f);
         }
     }
 }

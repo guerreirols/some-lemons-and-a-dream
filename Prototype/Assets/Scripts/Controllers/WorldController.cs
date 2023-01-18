@@ -1,19 +1,31 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
     private bool gameOver;
 
+    [SerializeField]
+    private GameObject pauseCanvas;
 
     [SerializeField]
     private Image mood;
+    [SerializeField]
+    private GameObject closed;
 
     [SerializeField]
     private Sprite happy;
     [SerializeField]
     private Sprite angry;
+
+    [SerializeField]
+    private Text lemonadePrice;
+    [SerializeField]
+    private Text time;
+
+    private int random;
 
     void Start()
     {
@@ -34,25 +46,72 @@ public class WorldController : MonoBehaviour
         {
             mood.sprite = angry;
         }
+
+        lemonadePrice.text = "M$" + LemonadeStandDemands.GetLemonadeStand().GetLemonadeValue().ToString("N");
+        time.text = LemonadeStandDemands.GetLemonadeStand().GetLemonadeSpeed() + " seconds";
+
+        if(!LemonadeStandDemands.GetLemonadeStand().GetOpen())
+        {
+            closed.SetActive(true);
+        }
+        else
+        {
+            closed.SetActive(false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
+        {
+            Resume();
+        }
     }
 
     IEnumerator SoldLemonade()
     {
         while(!gameOver)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(LemonadeStandDemands.GetLemonadeStand().GetLemonadeSpeed());
             if (LemonadeStandDemands.GetLemonadeStand().GetOpen())
             {
-                LemonadeStandDemands.Sale();
+                if(PlayerDemands.GetPlayer().GetIsHappy())
+                {
+                    LemonadeStandDemands.Sale();
+                }
+                else
+                {
+                    random = Random.Range(1, 4);
+
+                    if(random == 3)
+                    {
+                        LemonadeStandDemands.Sale();
+                    }
+                }
+                
             }            
         }  
+    }
+
+    public void ResetWorld()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Resume()
+    {
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 
     IEnumerator Hungry()
     {
         while (!gameOver)
         {
-            yield return new WaitForSeconds(8f);
+            yield return new WaitForSeconds(11f);
             PlayerDemands.Hungry();
         }
     }
@@ -60,7 +119,7 @@ public class WorldController : MonoBehaviour
     {
         while (!gameOver)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(13f);
             PlayerDemands.ClothesDesire();
         }
     }

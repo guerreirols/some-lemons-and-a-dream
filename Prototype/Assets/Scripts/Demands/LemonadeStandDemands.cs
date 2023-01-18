@@ -4,7 +4,7 @@ public class LemonadeStandDemands : MonoBehaviour
 {
     private static LemonadeStand lemonadeStand;
 
-    void Start()
+    void Awake()
     {
         lemonadeStand = new LemonadeStand(2f);
     }
@@ -38,5 +38,51 @@ public class LemonadeStandDemands : MonoBehaviour
         {
             lemonadeStand.SetOpen(false);
         }
+    }
+
+    public static void PremiumLemonsStatus(bool buy)
+    {
+        if(buy)
+        {
+            lemonadeStand.SetLemonadeValue(4f);
+        }
+        else
+        {
+            lemonadeStand.SetLemonadeValue(2f);
+        }
+    }
+
+    public static void StandTime(int id, bool buy)
+    {
+        if(buy)
+        {
+            if (id == 1)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() - 0.7f);
+            }
+            else if (id == 2)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() - 0.9f);
+            }
+            else if (id == 3)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() - 1.3f);
+            }
+        }
+        else
+        {
+            if (id == 1)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() + 0.7f);
+            }
+            else if (id == 2)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() + 0.9f);
+            }
+            else if (id == 3)
+            {
+                lemonadeStand.SetLemonadeSpeed(lemonadeStand.GetLemonadeSpeed() + 1.2f);
+            }
+        }    
     }
 }

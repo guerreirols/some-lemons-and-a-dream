@@ -12,11 +12,6 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private Text mood;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         clotheDesireBar.fillAmount = PlayerDemands.GetPlayer().GetClothesDesire();

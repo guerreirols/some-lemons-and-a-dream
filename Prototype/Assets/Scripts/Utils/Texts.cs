@@ -1,4 +1,4 @@
-public class Texts
+﻿public class Texts
 {
     #region Player Mood
     public static string msgHappy = "HAPPY";
@@ -54,5 +54,12 @@ public class Texts
 
     public static string msgBasicClotheDescription = "Wear the shirt of your favorite band right now!";
     public static string msgSuperClotheDescription = "Tired of being threatened? With this heavy jacket be more intimidating!";
+    #endregion
+
+    #region Start Game
+    public static string msgGameTitle = "SOME LEMONS AND A DREAM";
+    public static string msgGameTutorial = "Welcome! In this game, you take on the role of a little boy who dreams of being the biggest lemonade seller in the mall's food court. Sell ​​as many lemonades as possible by expanding your stand. Be careful with hunger and the desire to dress well, as this can change your mood and interfere with sales. If things go wrong, you can press ESC and restart the game.";
+    public static string msgGameButton = "PLAY!";
+    public static string msgGameCredit = "A prototype developed by Lucas Guerreiro, 01/17/2023";
     #endregion
 }

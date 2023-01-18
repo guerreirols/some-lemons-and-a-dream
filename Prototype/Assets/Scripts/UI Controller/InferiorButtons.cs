@@ -57,7 +57,7 @@ public class InferiorButtons : MonoBehaviour
         else
         {
             interactBurguer.SetBool("hideButton", false);
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I) && !Dialogue.inDialogue)
             {
                 inBurguer = true;
             }
@@ -76,7 +76,7 @@ public class InferiorButtons : MonoBehaviour
         else
         {
             interactClothe.SetBool("hideButton", false);
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I) && !Dialogue.inDialogue)
             {
                 inClothes = true;
             }

@@ -25,11 +25,6 @@ public class StoreDemands : MonoBehaviour
         storeCardsList.Add(premiumLemons);
     }
 
-    void Start()
-    {
-
-    }
-
     public static StoreCard GetCardBowl()
     {
         return bowl;
@@ -104,10 +99,8 @@ public class StoreDemands : MonoBehaviour
                 LemonadeStandDemands.GetLemonadeStand().SetTotalBlenders(LemonadeStandDemands.GetLemonadeStand().GetTotalBlenders() + 1);
                 break;
             case 2:
-                print("a");
                 LemonadeStandDemands.GetLemonadeStand().SetBasicBlenders(LemonadeStandDemands.GetLemonadeStand().GetBasicBlenders() + 1);
                 LemonadeStandDemands.GetLemonadeStand().SetTotalBlenders(LemonadeStandDemands.GetLemonadeStand().GetTotalBlenders() + 1);
-                print(LemonadeStandDemands.GetLemonadeStand().GetTotalBlenders());
                 break;
             case 3:
                 LemonadeStandDemands.GetLemonadeStand().SetSuperBlenders(LemonadeStandDemands.GetLemonadeStand().GetSuperBlenders() + 1);
@@ -115,9 +108,11 @@ public class StoreDemands : MonoBehaviour
                 break;
             case 4:
                 LemonadeStandDemands.GetLemonadeStand().SetPremiumLemons(true);
+                LemonadeStandDemands.PremiumLemonsStatus(true);
                 break;
         }
 
+        LemonadeStandDemands.StandTime(id, true);
         return yourItem;
     }
 
@@ -141,7 +136,10 @@ public class StoreDemands : MonoBehaviour
                 break;
             case 4:
                 LemonadeStandDemands.GetLemonadeStand().SetPremiumLemons(false);
+                LemonadeStandDemands.PremiumLemonsStatus(false);
                 break;
         }
+
+        LemonadeStandDemands.StandTime(storeCard.GetId(), false);
     }
 }

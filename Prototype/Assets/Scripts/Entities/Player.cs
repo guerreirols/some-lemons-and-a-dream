@@ -10,7 +10,7 @@ public class Player
     {
         clothesDesire = 0f;
         hungry = 0f;
-        money = 200f;
+        money = 20f;
         isHappy = true;
         clothesBag = new ClothesBag();
     }

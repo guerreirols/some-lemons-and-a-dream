@@ -8,6 +8,10 @@ public class BurguerAndClothesShop : MonoBehaviour
     [SerializeField]
     private GameObject shop;
     [SerializeField]
+    private GameObject basicSold;
+    [SerializeField]
+    private GameObject superSold;
+    [SerializeField]
     private Text title;
     [SerializeField]
     private Text money;
@@ -54,6 +58,8 @@ public class BurguerAndClothesShop : MonoBehaviour
         this.isBurguer = isBurguer;
 
         shop.SetActive(true);
+        basicSold.SetActive(false);
+        superSold.SetActive(false);
 
         money.text = "M$ " + PlayerDemands.GetPlayer().GetMoney().ToString("N");
 
@@ -107,6 +113,20 @@ public class BurguerAndClothesShop : MonoBehaviour
         {
             superButton.interactable = true;
         }
+
+        //
+
+        if (basicProduct.GetId() == 3 && PlayerDemands.GetPlayer().GetClothesBag().GetHasBasicShirt())
+        {
+            basicSold.SetActive(true);
+            basicButton.interactable = false;
+        }
+
+        if (superProduct.GetId() == 4 && PlayerDemands.GetPlayer().GetClothesBag().GetHasSuperShirt())
+        {
+            superSold.SetActive(true);
+            superButton.interactable = false;
+        }
     }
 
     public void BuyProduct(int id)
@@ -130,12 +150,28 @@ public class BurguerAndClothesShop : MonoBehaviour
             {
                 PlayerDemands.KillClothesDesire(basicProduct.GetPower());
                 PlayerDemands.Buy(basicProduct.GetPrice());
+                PlayerDemands.GetPlayer().GetClothesBag().SetHasBasicShirt(true);
             }
             else
             {
                 PlayerDemands.KillClothesDesire(superProduct.GetPower());
                 PlayerDemands.Buy(superProduct.GetPrice());
+                PlayerDemands.GetPlayer().GetClothesBag().SetHasSuperShirt(true);
             }
+        }
+
+        //
+
+        if (basicProduct.GetId() == 3 && PlayerDemands.GetPlayer().GetClothesBag().GetHasBasicShirt())
+        {
+            basicSold.SetActive(true);
+            basicButton.interactable = false;
+        }
+
+        if (superProduct.GetId() == 4 && PlayerDemands.GetPlayer().GetClothesBag().GetHasSuperShirt())
+        {
+            superSold.SetActive(true);
+            superButton.interactable = false;
         }
 
         money.text = "M$ " + PlayerDemands.GetPlayer().GetMoney().ToString("N");
